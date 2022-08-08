@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import lombok.EqualsAndHashCode;
@@ -30,7 +29,8 @@ public class Restaurante {
 	
 	private BigDecimal taxaFrete;
 	
+	
+	//@JoinColumn(name = "cozinha_codigo", nullable = false)
 	@ManyToOne
-	@JoinColumn(name = "cozinha_codigo", nullable = false)
 	private Cozinha cozinha;
 }
