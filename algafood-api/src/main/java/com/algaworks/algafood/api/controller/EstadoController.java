@@ -24,12 +24,13 @@ import com.algaworks.algafood.domain.repository.EstadoRepository;
 import com.algaworks.algafood.domain.service.CadastroEstadoService;
 
 @RestController
-@RequestMapping("/estados")
+@RequestMapping(value = "/estados")
 public class EstadoController {
 
 	@Autowired
 	private EstadoRepository estadoRepository;
 
+	@Autowired
 	private CadastroEstadoService cadastroEstado;
 
 	@GetMapping
@@ -39,10 +40,10 @@ public class EstadoController {
 
 	@GetMapping("/{estadoId}")
 	public ResponseEntity<Estado> buscar(@PathVariable Long estadoId) {
-		Optional<Estado> estado = estadoRepository.findById(estadoId);
+		Estado estado = estadoRepository.findById(estadoId).orElse(null);
 
-		if (estado.isPresent()) {
-			return ResponseEntity.ok(estado.get());
+		if (estado != null) {
+			return ResponseEntity.ok(estado);
 		}
 
 		return ResponseEntity.notFound().build();
@@ -81,4 +82,5 @@ public class EstadoController {
 			return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
 		}
 	}
+
 }

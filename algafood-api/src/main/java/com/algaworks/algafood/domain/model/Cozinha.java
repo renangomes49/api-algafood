@@ -8,24 +8,20 @@ import javax.persistence.Id;
 
 import com.fasterxml.jackson.annotation.JsonRootName;
 
+import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
 
 @JsonRootName("cozinha")
-@Getter
-@Setter
+@Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 public class Cozinha {
 
 	@EqualsAndHashCode.Include
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)	
 	private Long id;
-	
-	//@JsonIgnore
-	//@JsonProperty("titulo")
+
 	@Column(nullable = false)
 	private String nome;
 
