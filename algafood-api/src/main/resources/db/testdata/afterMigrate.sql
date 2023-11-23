@@ -1,3 +1,30 @@
+set foreign_key_checks = 0;
+
+delete from cozinha; 
+delete from cidade; 
+delete from estado;
+delete from forma_pagamento; 
+delete from grupo; 
+delete from grupo_permissao;
+delete from permissao;
+delete from produto;
+delete from restaurante;
+delete from restaurante_forma_pagamento;
+delete from usuario;
+delete from usuario_grupo;
+
+set foreign_key_checks = 1;
+
+alter table cidade auto_increment = 1;
+alter table cozinha auto_increment = 1;
+alter table estado auto_increment = 1;
+alter table forma_pagamento auto_increment = 1; 
+alter table grupo auto_increment = 1;
+alter table permissao auto_increment = 1;
+alter table produto auto_increment = 1;
+alter table restaurante auto_increment = 1;
+alter table usuario auto_increment = 1;
+
 insert into cozinha (id, nome) values (1, 'Sul-Coreana');
 insert into cozinha (id, nome) values (2, 'Indiana');
 insert into cozinha (id, nome) values (3, 'Italiana');
@@ -7,10 +34,10 @@ insert into estado (id, nome) values (1, 'Ceará');
 insert into estado (id, nome) values (2, 'Amazonas');
 insert into estado (id, nome) values (3, 'São Paulo');
 
-insert into cidade (nome, estado_id) values ('Fortaleza', 1);
-insert into cidade (nome, estado_id) values ('Juazeiro do Norte', 1);
-insert into cidade (nome, estado_id) values ('Manaus', 2);
-insert into cidade (nome, estado_id) values ('São Paulo', 3);
+insert into cidade (id, nome, estado_id) values (1, 'Fortaleza', 1);
+insert into cidade (id, nome, estado_id) values (2, 'Juazeiro do Norte', 1);
+insert into cidade (id, nome, estado_id) values (3, 'Manaus', 2);
+insert into cidade (id, nome, estado_id) values (4, 'São Paulo', 3);
 
 insert into restaurante (id, nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao) values (1, 'Thai Delivery', 1000.0, 1, utc_timestamp, utc_timestamp);
 insert into restaurante (id, nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao) values (2, 'Tuk Tuk Comida Indiana', 1000.0, 2, utc_timestamp, utc_timestamp);
@@ -34,7 +61,7 @@ insert into produto (nome, descricao, preco, ativo, restaurante_id) values ('Cam
 insert into produto (nome, descricao, preco, ativo, restaurante_id) values ('Salada picante com carne grelhada', 'Salada de folhas com cortes finos de carne bovina grelhada e nosso molho especial de pimenta vermelha', 87.20, 1, 2);
 
 insert into produto (nome, descricao, preco, ativo, restaurante_id) values ('Garlic Naan', 'Pão tradicional indiano com cobertura de alho', 21, 1, 3);
-insert into produto (nome, descricao, preco, ativo, restaurante_id) values ('Murg Curry', 'Cubos de frango preparados com molho curry e especiarias', 43, 1, 3);
+insert into algafood.produto (nome, descricao, preco, ativo, restaurante_id) values ('Murg Curry', 'Cubos de frango preparados com molho curry e especiarias', 43, 1, 3);
 
 insert into produto (nome, descricao, preco, ativo, restaurante_id) values ('Bife Ancho', 'Corte macio e suculento, com dois dedos de espessura, retirado da parte dianteira do contrafilé', 79, 1, 4);
 insert into produto (nome, descricao, preco, ativo, restaurante_id) values ('T-Bone', 'Corte muito saboroso, com um osso em formato de T, sendo de um lado o contrafilé e do outro o filé mignon', 89, 1, 4);
